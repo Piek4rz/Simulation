@@ -1,10 +1,11 @@
-public class Map
+import javax.swing.JFrame;
+
+public class Window extends JFrame
 {
     private int xwidth;
     private int ylength;
-    private int texture;
 
-    Map(int width, int length)
+    Window(int width, int length)
     {
         this.xwidth = width;
         this.ylength = length;
