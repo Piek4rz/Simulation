@@ -4,5 +4,5 @@ import Simulation.motion.Direction;
 
 public interface Flying
 {
-    void move();
+    public void move();
 }

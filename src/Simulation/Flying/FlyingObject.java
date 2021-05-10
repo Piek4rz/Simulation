@@ -11,7 +11,7 @@ public abstract class FlyingObject implements Simulation.Flying.Flying
     @Override
     public void move()
     {
-
+        this.position.changeCoordinate(this.front);
     }
 
     public Coordinate getPosition()
@@ -20,7 +20,7 @@ public abstract class FlyingObject implements Simulation.Flying.Flying
     }
     public Direction getFront()
     {
-        return front;
+        return this.front;
     }
 
 }

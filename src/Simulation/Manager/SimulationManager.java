@@ -38,6 +38,7 @@ public class SimulationManager
 
     public boolean round()
     {
+
         return !redTeam.isEmpty() && !blueTeam.isEmpty();
     }
 

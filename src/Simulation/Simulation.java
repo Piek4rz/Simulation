@@ -1,15 +1,14 @@
 package Simulation;
 
 import Simulation.Flying.Bullet;
+import Simulation.Flying.Cloud;
 import Simulation.Flying.FlyingObject;
 import Simulation.Flying.Plane.*;
 import Simulation.motion.*;
-import Simulation.Manager.CollisionsManager;
 import java.util.ArrayList;
 import java.util.List;
+import Simulation.Manager.*;
 
-
-//TODO change destroyCollapsedFlyingObjects to sub elements from every array instead of the main one
 
 public class Simulation
 {
@@ -19,33 +18,18 @@ public class Simulation
 
         ArrayList<RedPlane> redPlanes = new ArrayList<>();
         ArrayList<BluePlane> bluePlanes = new ArrayList<>();
+        ArrayList<Cloud> clouds = new ArrayList<>();
         ArrayList<Bullet> bullets = new ArrayList<>();
 
         redPlanes.add(new RedPlane(new Coordinate(5, 4), Direction.LEFT));
-        redPlanes.add(new RedPlane(new Coordinate(10, 15), Direction.LEFT));
-        redPlanes.add(new RedPlane(new Coordinate(8, 6), Direction.LEFT));
 
-
-        bluePlanes.add(new BluePlane(new Coordinate(5, 4), Direction.RIGHT));
-        bluePlanes.add(new BluePlane(new Coordinate(6, 1), Direction.RIGHT));
         bluePlanes.add(new BluePlane(new Coordinate(7, 6), Direction.RIGHT));
 
-        bullets.add(new Bullet(redPlanes.get(0))); // 4,4
-        bullets.add(new Bullet(redPlanes.get(1))); // 9, 15
-        bullets.add(new Bullet(redPlanes.get(2))); // 7, 6
+        //bullets.add(new Bullet(redPlanes.get(0)));
 
-        CollisionsManager.destroyCollapsedFlyingObjects(redPlanes, bluePlanes, bullets);
+        //bullets.add(new Bullet(bluePlanes.get(0)));
 
-        ArrayList<FlyingObject> all = new ArrayList<>();
-
-        all.addAll(redPlanes);
-        all.addAll(bluePlanes);
-        all.addAll(bullets);
-
-        for (FlyingObject flyingObject: all)
-        {
-            System.out.println(flyingObject.getPosition().toString());
-        }
+        //clouds.add(new Cloud(new Coordinate(10, 4)));
 
 
     }

@@ -16,7 +16,7 @@ public abstract class Plane extends FlyingObject
         this.position = position;
         this.front = front;
         this.isReloaded = true;
-        this.isVisible = false;
+        this.isVisible = true;
     }
 
     public Direction getFront()
@@ -24,9 +24,14 @@ public abstract class Plane extends FlyingObject
         return this.front;
     }
 
-    public void changeVisibilityStatus(boolean isHidden)
+    public boolean getVisibility()
     {
-        this.isVisible = true;
+        return this.isVisible;
+    }
+
+    public void changeVisibilityStatus(boolean isVisible)
+    {
+        this.isVisible = isVisible;
     }
 
     public void destroy()

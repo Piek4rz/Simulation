@@ -1,2 +1,6 @@
-package Simulation.Manager;public class ShootingManager {
+package Simulation.Manager;
+
+public class ShootingManager
+{
+
 }

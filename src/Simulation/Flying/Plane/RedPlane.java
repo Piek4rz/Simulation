@@ -21,5 +21,9 @@ public final class RedPlane extends Plane
         statistics.subAlive();
     }
 
+    public static Statistics getStatistics()
+    {
+        return statistics;
+    }
 
 }

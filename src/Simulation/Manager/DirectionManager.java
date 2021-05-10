@@ -1,4 +1,6 @@
-package Simulation.motion;
+package Simulation.Manager;
+
+import Simulation.motion.Direction;
 
 import java.util.Random;
 
@@ -9,7 +11,7 @@ public class DirectionManager
         {
             Random random = new Random();
 
-            switch(random.nextInt(8))
+            switch(random.nextInt() % 8)
             {
                 case 0 -> {return Direction.UP;}
                 case 1 -> {return  Direction.RIGHT_UP;}
