@@ -151,5 +151,13 @@ SimulationManager <-- ShootingManager
 Menu <-- SimulationManager
 Simulation <-- Menu
 Cloud <-- DirectionManager
+VisibilityManager <-- Plane
+VisibilityManager <-- Cloud
+CollisionManager <-- Coordinate
+CollisionManager <-- FlyingObject
+MotionManager <-- FlyingObject
+ShootingManager <-- Plane
+ShootingManager <-- Bullet
+DirectionManager <-- Direction
 
 @enduml
