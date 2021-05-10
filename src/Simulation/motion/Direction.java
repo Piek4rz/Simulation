@@ -2,12 +2,13 @@ package Simulation.motion;
 
 public enum Direction
 {
-    left,
-    leftUp,
-    leftDown,
-    right,
-    rightDown,
-    rightUp,
-    down,
-    up;
+    LEFT,
+    LEFT_UP,
+    LEFT_DOWN,
+    RIGHT,
+    RIGHT_DOWN,
+    RIGHT_UP,
+    DOWN,
+    UP,
+    ERROR
 }
