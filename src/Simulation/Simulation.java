@@ -20,16 +20,18 @@ public class Simulation
         ArrayList<BluePlane> bluePlanes = new ArrayList<>();
         ArrayList<Cloud> clouds = new ArrayList<>();
         ArrayList<Bullet> bullets = new ArrayList<>();
+        ArrayList<FlyingObject> flyingObjects = new ArrayList<>();
 
         redPlanes.add(new RedPlane(new Coordinate(5, 4), Direction.LEFT));
 
         bluePlanes.add(new BluePlane(new Coordinate(7, 6), Direction.RIGHT));
 
-        //bullets.add(new Bullet(redPlanes.get(0)));
+        flyingObjects.addAll(redPlanes);
+        flyingObjects.addAll(bluePlanes);
+        MotionManager.moveFlyingObjects(flyingObjects);
 
-        //bullets.add(new Bullet(bluePlanes.get(0)));
-
-        //clouds.add(new Cloud(new Coordinate(10, 4)));
+        System.out.println(redPlanes.get(0).getPosition().toString());
+        System.out.println(bluePlanes.get(0).getPosition().toString());
 
 
     }

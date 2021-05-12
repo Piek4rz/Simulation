@@ -7,27 +7,11 @@ import java.util.ArrayList;
 
 public class MotionManager
 {
-    public static void moveFlyingObjects(ArrayList<RedPlane> redTeam, ArrayList<BluePlane> blueTeam,
-                                         ArrayList<Bullet> bullets, ArrayList<Cloud> clouds)
+    public static void moveFlyingObjects(ArrayList<FlyingObject> flyingObjects)
     {
-        for (RedPlane plane: redTeam)
+        for (FlyingObject flyingObject: flyingObjects)
         {
-            plane.move();
-        }
-
-        for (BluePlane plane: blueTeam)
-        {
-            plane.move();
-        }
-
-        for (Bullet bullet: bullets)
-        {
-            bullet.move();
-        }
-
-        for (Cloud cloud: clouds)
-        {
-            cloud.move();
+            flyingObject.move();
         }
     }
 }

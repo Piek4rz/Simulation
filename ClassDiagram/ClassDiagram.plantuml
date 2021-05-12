@@ -3,11 +3,23 @@ class Simulation
 {
     public static void main(String[] args)
 }
-abstract Plane
-{
-    # boolean isReloaded
-    # boolean isVisible
 
+class Database
+{
+    - ArrayList<RedPlane> redTeam
+    - ArrayList<BluePlane> blueTeam
+    - ArrayList<Cloud> clouds
+    - int mapWidth
+    - int mapHeight
+}
+
+class Plane
+{
+    - boolean isReloaded
+    - boolean isVisible
+    - ArrayList<Bullet> firedBullets
+
+    Plane(Coordinate position, Direction front)
     + Plane(Coordinate position, Direction front)
     + Direction getFront()
     + boolean getVisibilityStatus()
@@ -16,10 +28,12 @@ abstract Plane
     + void loadAmmunition()
     + Direction scan()
 }
+
 interface Flying
 {
     + void move()
 }
+
 abstract FlyingObject
 {
     # Coordinate position;
@@ -28,6 +42,7 @@ abstract FlyingObject
     + Coordinate getPosition()
     + Direction getFront()
 }
+
 class Cloud
 {
     - static final Dirction windFront
@@ -35,67 +50,43 @@ class Cloud
     + Cloud(Coordinate position)
     + void hide(Plane plane)
 }
+
 class Bullet
 {
-    - Plane owner
-    + Bullet(Plane owner)
+    + Bullet()
     + Plane getOwner()
 }
-class RedPlane
-{
-    - static Statistics statistics
 
-    + RedPlane(Coordinate position, Direction front)
-    + static Statistics getStatistics()
-}
-class BluePlane
-{
-
-    - static Statistics statistics
-
-    + BluePlane(Coordinate position, Direction front)
-    + static Statistics getStatistics()
-}
-class CollisionManager
-{
-    - static ArrayList<Coordinate> findFieldsToClear(ArrayList<FlyingObject> flyingObjects)
-
-    + static void destoryCollapsedFlyingObjects(ArrayList<FlyingObject> flyingObjects)
-
-}
 class DirectionManager
 {
     + static Direction randDirection()
 }
-class MotionManager
-{
-    + static void moveFlyingObjects(ArrayList<FlyingObject> flyingObjects)
-}
-class ShootingManager
-{
-    - ArrayList<Plane> findReadyToFire(ArrayList<Plane> planes)
-    + ArrayList<Bullet> fire(ArrayList<Plane> planes)
-}
+
 class SimulationManager
 {
-    - ArrayList<RedPlane> redTeam
-    - ArrayList<BluePlane> blueTeam
-    - ArrayList<Cloud> clouds
-    - ArrayList<Bullet> bullets
-    - int mapWidth
-    - int mapHeight
-
+    - Database database
+    - static ArrayList<Coordinate> findFieldsToClear(ArrayList<FlyingObject> flyingObjects)
+    - ArrayList<Plane> findReadyToFire(ArrayList<Plane> planes)
+    - static void destoryCollapsedFlyingObjects(ArrayList<FlyingObject> flyingObjects)
+    - static void hidePlanes(ArrayList<Plane> planes, ArrayList<Cloud> clouds)
+    - static void moveFlyingObjects(ArrayList<FlyingObject> flyingObjects)
+    - ArrayList<Bullet> fire(ArrayList<Plane> planes)
     + SimulationManager(int teamsAbundance, int mapWidht, int mapHeight)
     + boolean round()
 }
-class VisibilityManager
+
+class StatisticsManager
 {
-    + static void hidePlanes(ArrayList<Plane> planes, ArrayList<Cloud> clouds)
+    - ArrayList<Statistics> statistics
+
+    + void updateStatistics()
 }
+
 class Menu
 {
     + Menu()
 }
+
 class Coordinate
 {
     - int x
@@ -106,6 +97,7 @@ class Coordinate
     + int getX()
     + int getY()
 }
+
 enum Direction
 {
     LEFT
@@ -118,6 +110,7 @@ enum Direction
     UP
     ERROR
 }
+
 class Statistics
 {
     - int kills
@@ -133,31 +126,21 @@ Flying <|.. FlyingObject
 FlyingObject <|-- Bullet
 FlyingObject <|-- Cloud
 FlyingObject <|-- Plane
-Plane <|-- RedPlane
-Plane <|-- BluePlane
-RedPlane *-- Statistics
-BluePlane *-- Statistics
-SimulationManager *-- RedPlane
-SimulationManager *-- BluePlane
-SimulationManager *-- Bullet
-SimulationManager *-- Cloud
+
+StatisticsManager *-- Statistics
 FlyingObject *-- Coordinate
 FlyingObject *-- Direction
-SimulationManager <-- DirectionManager
-SimulationManager <-- CollisionManager
-SimulationManager <-- MotionManager
-SimulationManager <-- VisibilityManager
-SimulationManager <-- ShootingManager
 Menu <-- SimulationManager
 Simulation <-- Menu
 Cloud <-- DirectionManager
-VisibilityManager <-- Plane
-VisibilityManager <-- Cloud
-CollisionManager <-- Coordinate
-CollisionManager <-- FlyingObject
-MotionManager <-- FlyingObject
-ShootingManager <-- Plane
-ShootingManager <-- Bullet
+Database *-- Plane
+Database *-- Cloud
+SimulationManager <-- Coordinate
+SimulationManager <-- Database
 DirectionManager <-- Direction
+SimulationManager <-- StatisticsManager
+SimulationManager <-- FlyingObject
+Plane *-- Bullet
+
 
 @enduml
