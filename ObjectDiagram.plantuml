@@ -1,0 +1,61 @@
+@startuml
+
+object database {
+mapHeight = 20
+mapWidth = 20
+}
+
+object planeRed {
+isReloaded = true
+isVisible = true
+front = UP
+}
+
+object planeBlue {
+isReloaded = true
+isVisible = true
+front = DOWN
+}
+
+object coordinateRed {
+x = 10
+y = 0
+}
+
+
+object coordinateBlue {
+x = 12
+y = 15
+}
+
+object coordinateCloud {
+x = 20
+y = 6
+}
+
+object cloud {
+  front = LEFT
+}
+
+object bulletRed
+object bulletBlue
+
+
+planeRed -- bulletRed
+planeBlue --bulletBlue
+
+
+coordinateCloud -- cloud
+coordinateBlue -- planeBlue
+coordinateRed -- planeRed
+
+
+cloud - planeRed :isVisible
+cloud - planeBlue : isVisible
+
+
+database -- coordinateRed
+database -- coordinateBlue
+database -- coordinateCloud
+
+@enduml
